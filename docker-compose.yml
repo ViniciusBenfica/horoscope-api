@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+  db:
+    image: mysql:latest
+    container_name: spring_boot
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: spring_boot
+    ports:
+        - 3306:3306
+    volumes:
+      - ./db-data:/data/db
