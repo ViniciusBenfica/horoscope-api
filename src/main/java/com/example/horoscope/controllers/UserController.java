@@ -5,7 +5,6 @@ import com.example.horoscope.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,27 +18,35 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
     
-    @PostMapping("/{name}")
-    public boolean list(@RequestBody User userBody, @PathVariable("name") String name){
+    @PostMapping("/login")
+    public boolean login(@RequestBody User user){
         try {
-            User userDatabase = this.userRepository.findByName(name);
-
-            if(userBody.getPassword().equals(userDatabase.getPassword())){
-                return true;
-            }else{
+            if(user.getName().equals("") || user.getPassword().equals("")){
                 return false;
+            }else{
+                User userDatabase = this.userRepository.findByName(user.getName());
+                if(user.getPassword().equals(userDatabase.getPassword())){
+                    return true;
+                }else{
+                    return false;
+                }
             }
+            
         } catch (Exception e) {
             return false;
         }
 
     }
 
-    @PostMapping("/")
-    public boolean user(@RequestBody User user){
+    @PostMapping("/create")
+    public boolean create(@RequestBody User user){
         try{
-            this.userRepository.save(user);
-            return true;
+            if(user.getName().equals("") || user.getEmail().equals("") || user.getPassword().equals("")){
+                return false;
+            }else{
+                this.userRepository.save(user);
+                return true;
+            }
         }catch(Exception e){
             return false;
         }
