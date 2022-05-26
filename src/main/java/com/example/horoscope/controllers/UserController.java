@@ -59,4 +59,44 @@ public class UserController {
             return false;
         }
     }
+
+    @PostMapping("/getKnights")
+    public String knights(@RequestBody User user){
+        try{
+            User userDatabase = this.userRepository.findByName(user.getName());
+            String date = userDatabase.getDate();
+            String [] result = date.split("-");
+            String signo = "";
+
+            if(result[1].equals("03") && Integer.parseInt(result[2]) <= 21 || result[1].equals("02") && Integer.parseInt(result[2]) >= 20){
+                 signo = "Aries";
+            }else if(result[1].equals("04") && Integer.parseInt(result[2]) >= 21 || result[1].equals("05") && Integer.parseInt(result[2]) <= 20){
+                 signo = "Touro";
+            }else if(result[1].equals("05") && Integer.parseInt(result[2]) >= 21 || result[1].equals("06") && Integer.parseInt(result[2]) <= 20){
+                 signo = "Gemeos";
+            }else if(result[1].equals("06") && Integer.parseInt(result[2]) >= 21 || result[1].equals("07") && Integer.parseInt(result[2]) <= 22){
+                 signo = "Cancer";
+            }else if(result[1].equals("07") && Integer.parseInt(result[2]) >= 23 || result[1].equals("08") && Integer.parseInt(result[2]) <= 22){
+                 signo = "Leao";
+            }else if(result[1].equals("08") && Integer.parseInt(result[2]) >= 23 || result[1].equals("09") && Integer.parseInt(result[2]) <= 22){
+                 signo = "Virgem";
+            }else if(result[1].equals("09") && Integer.parseInt(result[2]) >= 23 || result[1].equals("10") && Integer.parseInt(result[2]) <= 22){
+                 signo = "Libra";
+            }else if(result[1].equals("10") && Integer.parseInt(result[2]) >= 23 || result[1].equals("11") && Integer.parseInt(result[2]) <= 21){
+                 signo = "Escorpiao";
+            }else if(result[1].equals("11") && Integer.parseInt(result[2]) >= 22 || result[1].equals("12") && Integer.parseInt(result[2]) <= 21){
+                 signo = "Sagitario";
+            }else if(result[1].equals("12") && Integer.parseInt(result[2]) >= 22 || result[1].equals("01") && Integer.parseInt(result[2]) <= 19){
+                 signo = "Capricornio";
+            }else if(result[1].equals("01") && Integer.parseInt(result[2]) >= 20 || result[1].equals("02") && Integer.parseInt(result[2]) <= 18){
+                 signo = "Aquario";
+            }else if(result[1].equals("02") && Integer.parseInt(result[2]) >= 19 || result[1].equals("03") && Integer.parseInt(result[2]) <= 20){
+                 signo = "Peixe";
+            }
+            
+            return signo;
+        }catch(Exception e){
+            return "error";
+        }
+    }
 }
