@@ -73,29 +73,29 @@ public class UserController {
             String signo = "";
 
             if(result[1].equals("03") && Integer.parseInt(result[2]) <= 21 || result[1].equals("02") && Integer.parseInt(result[2]) >= 20){
-                 signo = "Aries";
+                 signo = "aries";
             }else if(result[1].equals("04") && Integer.parseInt(result[2]) >= 21 || result[1].equals("05") && Integer.parseInt(result[2]) <= 20){
-                 signo = "Touro";
+                 signo = "taurus";
             }else if(result[1].equals("05") && Integer.parseInt(result[2]) >= 21 || result[1].equals("06") && Integer.parseInt(result[2]) <= 20){
-                 signo = "Gemeos";
+                 signo = "gemini";
             }else if(result[1].equals("06") && Integer.parseInt(result[2]) >= 21 || result[1].equals("07") && Integer.parseInt(result[2]) <= 22){
-                 signo = "Cancer";
+                 signo = "cancer";
             }else if(result[1].equals("07") && Integer.parseInt(result[2]) >= 23 || result[1].equals("08") && Integer.parseInt(result[2]) <= 22){
-                 signo = "Leao";
+                 signo = "leo";
             }else if(result[1].equals("08") && Integer.parseInt(result[2]) >= 23 || result[1].equals("09") && Integer.parseInt(result[2]) <= 22){
-                 signo = "Virgem";
+                 signo = "virgo";
             }else if(result[1].equals("09") && Integer.parseInt(result[2]) >= 23 || result[1].equals("10") && Integer.parseInt(result[2]) <= 22){
-                 signo = "Libra";
+                 signo = "libra";
             }else if(result[1].equals("10") && Integer.parseInt(result[2]) >= 23 || result[1].equals("11") && Integer.parseInt(result[2]) <= 21){
-                 signo = "Escorpiao";
+                 signo = "scorpio";
             }else if(result[1].equals("11") && Integer.parseInt(result[2]) >= 22 || result[1].equals("12") && Integer.parseInt(result[2]) <= 21){
-                 signo = "Sagitario";
+                 signo = "sagittarius";
             }else if(result[1].equals("12") && Integer.parseInt(result[2]) >= 22 || result[1].equals("01") && Integer.parseInt(result[2]) <= 19){
-                 signo = "Capricornio";
+                 signo = "capricorn";
             }else if(result[1].equals("01") && Integer.parseInt(result[2]) >= 20 || result[1].equals("02") && Integer.parseInt(result[2]) <= 18){
-                 signo = "Aquario";
+                 signo = "aquarius";
             }else if(result[1].equals("02") && Integer.parseInt(result[2]) >= 19 || result[1].equals("03") && Integer.parseInt(result[2]) <= 20){
-                 signo = "Peixe";
+                 signo = "pisces";
             }
             
             map.put("signo", signo);
