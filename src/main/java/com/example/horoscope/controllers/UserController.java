@@ -1,5 +1,7 @@
 package com.example.horoscope.controllers;
 
+import java.util.HashMap;
+
 import com.example.horoscope.model.User;
 import com.example.horoscope.repository.UserRepository;
 
@@ -61,7 +63,9 @@ public class UserController {
     }
 
     @PostMapping("/getKnights")
-    public String knights(@RequestBody User user){
+    public HashMap<String, Object> knights(@RequestBody User user){
+        HashMap<String, Object> map = new HashMap<>();
+
         try{
             User userDatabase = this.userRepository.findByName(user.getName());
             String date = userDatabase.getDate();
@@ -94,9 +98,11 @@ public class UserController {
                  signo = "Peixe";
             }
             
-            return signo;
+            map.put("signo", signo);
+
+            return map;
         }catch(Exception e){
-            return "error";
+            return map;
         }
     }
 }
