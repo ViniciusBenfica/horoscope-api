@@ -30,7 +30,7 @@ public class UserController {
     @PostMapping("/login")
     public boolean login(@RequestBody User user){
         try {
-            if(user.getName().equals("") || user.getPassword().equals("") || user.getDate().equals("")){
+            if(user.getName().equals("") || user.getPassword().equals("")){
                 return false;
             }else{
                 User userDatabase = this.userRepository.findByName(user.getName());
