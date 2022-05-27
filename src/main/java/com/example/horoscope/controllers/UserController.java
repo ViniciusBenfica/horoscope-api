@@ -30,7 +30,7 @@ public class UserController {
     @PostMapping("/login")
     public boolean login(@RequestBody User user){
         try {
-            if(user.getName().equals("") || user.getPassword().equals("")){
+            if(user.getName().equals("") || user.getPassword().equals("") || user.getDate().equals("")){
                 return false;
             }else{
                 User userDatabase = this.userRepository.findByName(user.getName());
@@ -49,7 +49,7 @@ public class UserController {
     @PostMapping("/create")
     public boolean create(@RequestBody User user){
         try{
-            if(user.getName().equals("") || user.getEmail().equals("") || user.getPassword().equals("")){
+            if(user.getName().equals("") || user.getEmail().equals("") || user.getPassword().equals("") || user.getDate().equals("")){
                 return false;
             }else{
                 String encoder = this.PasswordEncoder.encode(user.getPassword());
